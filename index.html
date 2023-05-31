@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Piano Kit</title>
+</head>
+<body>
+    <ul class="set">
+        <li data-key="65" class="black key"><span style="color: white; font-size: 30px; position: relative; text-align: center; ">A</span></li>
+        <li data-key="66" class="white d key"><span style="color: black; font-size: 30px; position: relative; text-align: center; top: 140px;">B</span></li>
+        <li data-key="67" class="black key"><span style="color: white; font-size: 30px; position: relative; text-align: center; ">C</span></li>
+        <li data-key="68" class="white c key"><span style="color: black; font-size: 30px; position: relative; text-align: center; top: 140px;">D</span></li>
+        <li data-key="69" class="white key"><span style="color: black; font-size: 30px; position: relative; text-align: center; top: 140px;">E</span></li>
+        <li data-key="70" class="black key"><span style="color: white; font-size: 30px; position: relative; text-align: center; ">F</span></li>
+        <li data-key="71" class="white c key"><span style="color: black; font-size: 30px; position: relative; text-align: center; top: 140px;">G</span></li>
+        <li data-key="72" class="black key"><span style="color: white; font-size: 30px; position: relative; text-align: center; ">H</span></li>
+        <li data-key="73" class="white d key"><span style="color: black; font-size: 30px; position: relative; text-align: center; top: 140px;">I</span></li>
+        <li data-key="74" class="black key"><span style="color: white; font-size: 30px; position: relative; text-align: center; ">J</span></li>
+        <li data-key="75" class="white d key"><span style="color: black; font-size: 30px; position: relative; text-align: center; top: 140px;">K</span></li>
+        <li data-key="76" class="white e key"><span style="color: black; font-size: 30px; position: relative; text-align: center; top: 140px;">L</span></li>
+        <li data-key="77" class="black key"><span style="color: white; font-size: 30px; position: relative; text-align: center; ">M</span></li>
+        <li data-key="78" class="white d key"><span style="color: black; font-size: 30px; position: relative; text-align: center; top: 140px;">N</span></li>
+        <li data-key="79" class="black key"><span style="color: white; font-size: 30px; position: relative; text-align: center; ">O</span></li>
+        <li data-key="80" class="white c key"><span style="color: black; font-size: 30px; position: relative; text-align: center; top: 140px;">P</span></li>
+        <li data-key="81" class="white key"><span style="color: black; font-size: 30px; position: relative; text-align: center; top: 140px;">Q</span></li>
+        <li data-key="82" class="black key"><span style="color: white; font-size: 30px; position: relative; text-align: center; ">R</span></li>
+        <li data-key="83" class="white c key"><span style="color: black; font-size: 30px; position: relative; text-align: center; top: 140px;">S</span></li>
+        <li data-key="84" class="black key"><span style="color: white; font-size: 30px; position: relative; text-align: center; ">T</span></li>
+        <li data-key="85" class="white d key"><span style="color: black; font-size: 30px; position: relative; text-align: center; top: 140px;">U</span></li>
+        <li data-key="86" class="black key"><span style="color: white; font-size: 30px; position: relative; text-align: center; ">V</span></li>
+        <li data-key="87" class="white d key"><span style="color: black; font-size: 30px; position: relative; text-align: center; top: 140px;">W</span></li>
+    </ul>
+
+   
+    <audio data-key="65" src="sounds/Piano.ff.Eb6.ogg"></audio>
+    <audio data-key="66" src="sounds/Piano.ff.Eb7.ogg"></audio>
+    <audio data-key="67" src="sounds/Piano.ff.F1.ogg"></audio>
+    <audio data-key="68" src="sounds/Piano.ff.F2.ogg"></audio>
+    <audio data-key="69" src="sounds/Piano.ff.F3.ogg"></audio>
+    <audio data-key="70" src="sounds/Piano.ff.F4.ogg"></audio>
+    <audio data-key="71" src="sounds/Piano.ff.F5.ogg"></audio>
+    <audio data-key="72" src="sounds/Piano.ff.F6.ogg"></audio>
+    <audio data-key="73" src="sounds/Piano.ff.F7.ogg"></audio>
+    <audio data-key="74" src="sounds/Piano.ff.G1.ogg"></audio>
+    <audio data-key="75" src="sounds/Piano.ff.G2.ogg"></audio>
+    <audio data-key="76" src="sounds/Piano.ff.G3.ogg"></audio>
+    <audio data-key="77" src="sounds/Piano.ff.G4.ogg"></audio>
+    <audio data-key="78" src="sounds/Piano.ff.G5.ogg"></audio>
+    <audio data-key="79" src="sounds/Piano.ff.G6.ogg"></audio>
+    <audio data-key="80" src="sounds/Piano.ff.G7.ogg"></audio>
+    <audio data-key="81" src="sounds/Piano.ff.Gb1.ogg"></audio>
+    <audio data-key="82" src="sounds/Piano.ff.Gb2.ogg"></audio>
+    <audio data-key="83" src="sounds/Piano.ff.Gb3.ogg"></audio>
+    <audio data-key="84" src="sounds/Piano.ff.Gb4.ogg"></audio>
+    <audio data-key="85" src="sounds/Piano.ff.Gb5.ogg"></audio>
+    <audio data-key="86" src="sounds/Piano.ff.Gb6.ogg"></audio>
+    <audio data-key="87" src="sounds/Piano.ff.Gb7.ogg"></audio>
+
+
+
+</body>
+<script>
+    function playSound (e){  
+        let keyCode;
+
+        if (e.type === 'keydown') {
+        keyCode = e.keyCode;
+        } else if (e.type === 'touchstart') {
+        keyCode = e.target.dataset.key;
+        e.preventDefault(); // Varsa varsayılan dokunmatik etkileşimi engeller
+        } else {
+        return;
+        }
+
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+      const white = document.querySelector(`li[data-key="${e.keyCode}"]`)
+      if(!audio) return; // stop the function from running all together.
+      audio.currentTime = 0;
+      audio.play();
+      white.classList.add('playing')
+    }
+
+    function removeTransition(e) {
+      if (e.propertyName !== 'transform') return;
+      this.classList.remove('playing');
+    }
+    const keys = document.querySelectorAll('.key')
+    console.log(keys)
+    keys.forEach((key) => key.addEventListener("transitionend", removeTransition))
+
+    window.addEventListener("keydown", playSound)
+    window.addEventListener('touchstart', playSound);
+    window.addEventListener('touchend', playSound);
+</script>
+</html>
