@@ -64,16 +64,7 @@
 </body>
 <script>
     function playSound (e){  
-        let keyCode;
-
-        if (e.type === 'keydown') {
-        keyCode = e.keyCode;
-        } else if (e.type === 'touchstart') {
-        keyCode = e.target.dataset.key;
-        e.preventDefault(); // Varsa varsayılan dokunmatik etkileşimi engeller
-        } else {
-        return;
-        }
+       
 
       const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
       const white = document.querySelector(`li[data-key="${e.keyCode}"]`)
@@ -92,7 +83,23 @@
     keys.forEach((key) => key.addEventListener("transitionend", removeTransition))
 
     window.addEventListener("keydown", playSound)
-    window.addEventListener('touchstart', playSound);
-    window.addEventListener('touchend', playSound);
+    
+
+        // Dokunmatik olayları dinleyen fonksiyonlar
+        function handleTouchStart(e) {
+      const keyCode = e.target.dataset.key;
+      playSound(keyCode);
+    }
+
+    function handleTouchEnd(e) {
+      const keyCode = e.target.dataset.key;
+      const key = document.querySelector(`li[data-key="${keyCode}"]`);
+      key.classList.remove('playing');
+    }
+
+    const set = document.querySelector('.set');
+    set.addEventListener('touchstart', handleTouchStart);
+    set.addEventListener('touchend', handleTouchEnd);
+
 </script>
 </html>
