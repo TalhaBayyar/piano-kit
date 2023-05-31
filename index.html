@@ -83,23 +83,18 @@
     keys.forEach((key) => key.addEventListener("transitionend", removeTransition))
 
     window.addEventListener("keydown", playSound)
-    
+    window.addEventListener("click", (e) => {
+            const key = e.target.closest('.key');
+            if (!key) return; // Stop the function if no key element found
+            const keyCode = key.getAttribute('data-key');
+            const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+            if (!audio) return; // Stop the function if no audio element found for the key
+            audio.currentTime = 0; // Reset audio playback to the beginning
+            audio.play();
+            key.classList.add('playing');
+        });
 
-        // Dokunmatik olayları dinleyen fonksiyonlar
-        function handleTouchStart(e) {
-      const keyCode = e.target.dataset.key;
-      playSound(keyCode);
-    }
 
-    function handleTouchEnd(e) {
-      const keyCode = e.target.dataset.key;
-      const key = document.querySelector(`li[data-key="${keyCode}"]`);
-      key.classList.remove('playing');
-    }
-
-    const set = document.querySelector('.set');
-    set.addEventListener('touchstart', handleTouchStart);
-    set.addEventListener('touchend', handleTouchEnd);
 
 </script>
 </html>
