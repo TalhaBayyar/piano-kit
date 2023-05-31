@@ -86,3 +86,18 @@
     transition: transform 0.4s ease-in-out;
     
   }
+
+
+
+  @media only screen and (orientation: landscape) {
+    body {
+        flex-direction: row;
+    }
+    .set {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .key {
+        margin: 5px;
+    }
+}
